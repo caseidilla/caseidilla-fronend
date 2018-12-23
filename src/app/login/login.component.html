@@ -1,0 +1,25 @@
+<mat-card class="form">
+  <div>
+    <h1>LOGIN</h1>
+    <form class="field">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Login" #login [formControl]="loginFormControl">
+        <mat-error *ngIf="loginFormControl.hasError('required')">
+          Please enter login
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" #password [formControl]="passwordFormControl">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Please enter password
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary" (click)="onLoginClick(login.value, password.value)"
+              [disabled]="passwordFormControl.hasError('required') || loginFormControl.hasError('required')">
+        Login
+      </button>
+      <button mat-flat-button (click)="onRegistrateClick()">Registrate</button>
+    </form>
+  </div>
+</mat-card>

@@ -1,0 +1,5 @@
+<mat-form-field class="message-input" appearance="outline">
+  <mat-label>Message</mat-label>
+  <textarea matInput placeholder="Enter message..." #message></textarea>
+</mat-form-field>
+<button [disabled]="!chosenDialog" class="send-message-button" mat-raised-button (click)="sendMessage(message)">Send</button>

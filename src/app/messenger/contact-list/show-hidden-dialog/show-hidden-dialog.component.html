@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Show hidden dialogs</h1>
+<div mat-dialog-content>
+  <p>Enter your pin:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="pin">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+</div>

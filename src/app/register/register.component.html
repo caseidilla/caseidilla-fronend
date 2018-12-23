@@ -1,0 +1,39 @@
+<mat-card class="form">
+  <div>
+    <h1>REGISTRATE</h1>
+    <form class="field">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Login" #login [formControl]="loginFormControl">
+        <mat-error *ngIf="loginFormControl.hasError('required')">
+          Please enter login
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Secret code" #secretCode [formControl]="secretFormControl">
+        <mat-error *ngIf="secretFormControl.hasError('required')">
+          Please enter secret
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" #password [formControl]="passwordFormControl">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+          Please enter password
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Confirm your password" [type]="hideConf ? 'password' : 'text'" #confirmPassword [formControl]="confirmPasswordFormControl">
+        <mat-icon matSuffix (click)="hideConf = !hideConf">{{hideConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+          Please enter password
+        </mat-error>
+      </mat-form-field>
+      <button mat-flat-button color="primary"
+              (click)="onRegistrateClick(login.value, secretCode.value, password.value, confirmPassword.value)"
+              [disabled]="loginFormControl.hasError('required') || secretFormControl.hasError('required') || passwordFormControl.hasError('required') || confirmPasswordFormControl.hasError('required')">
+        Register
+      </button>
+      <button mat-flat-button (click)="onCancelClick()">I already have an account</button>
+    </form>
+  </div>
+</mat-card>

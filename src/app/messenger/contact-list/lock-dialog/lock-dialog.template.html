@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Lock {{data.participant}} dialog</h1>
+<div mat-dialog-content>
+  <p>Enter your pin:</p>
+  <mat-form-field>
+    <input matInput #pin>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onOkClick(pin.value)" cdkFocusInitial>Ok</button>
+</div>

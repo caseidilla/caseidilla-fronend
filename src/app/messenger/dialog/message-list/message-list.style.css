@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  overflow: auto;
+  background-color: #f2f2f2;
+}

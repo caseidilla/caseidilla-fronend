@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Invite</h1>
+<div mat-dialog-content>
+  <div *ngIf="secret">Generated secret:</div>
+  <div>{{secret}}</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onGenerate()">Generate</button>
+</div>

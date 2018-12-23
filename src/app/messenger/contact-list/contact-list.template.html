@@ -1,0 +1,33 @@
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-divider></mat-divider>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="settings">Settings</button>
+  <button mat-menu-item (click)="onInviteClick()">Invite</button>
+  <button mat-menu-item *ngIf="!pin" (click)="onShowHiddenDialogsClick()">Show hidden dialogs</button>
+  <button mat-menu-item *ngIf="pin" (click)="onHideDialogs()">Hide dialogs</button>
+  <button mat-menu-item (click)="onCreateNewDialogClick()">Create new dialog</button>
+  <button mat-menu-item (click)="onHelpClick()">Help</button>
+  <button mat-menu-item (click)="onLogOutClick()">Log out</button>
+</mat-menu>
+
+<mat-menu #settings="matMenu">
+  <button mat-menu-item (click)="onChangePinClick()">Change pin</button>
+</mat-menu>
+
+<mat-list>
+  <ng-container *ngFor="let contact of contactList | async">
+    <mat-list-item ngClass="contact-list_item" (click)="dialogSelect(contact.login)"
+                   [ngStyle]="{'background-color': contact.secret ? '#dcdcdc' : '#fafafa'}">
+      <p mat-line *ngIf="contact.name == null; else nameDefined">{{contact.login}}</p>
+      <ng-template mat-line #nameDefined>{{contact.name}}</ng-template>
+      <button *ngIf="!contact.hidden" mat-button (click)="lockDialog(contact.login)">
+        <mat-icon>lock</mat-icon>
+      </button>
+      <button *ngIf="contact.hidden" mat-button [disabled]="true">
+        <mat-icon>lock_open</mat-icon>
+      </button>
+      <button mat-button mat-line style="width: 100px" (click)="openChangeNameDialog(contact.login)">Change</button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+  </ng-container>
+</mat-list>

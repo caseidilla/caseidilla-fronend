@@ -1,0 +1,16 @@
+<mat-list style="flex: 1">
+  <ng-container *ngFor="let message of polledMessages$ | async">
+    <mat-list-item *ngIf="message.type === 'sent'" class="right" style="padding-bottom: 40px">
+      <mat-card style="background-color: #fdf376; max-width: 300px; max-height: 40px; overflow: auto">
+        <mat-card-title style="font-size: 16px">{{message.body}}</mat-card-title>
+        <mat-card-subtitle style="font-size: 12px">{{message.timestamp | date:'medium'}}</mat-card-subtitle>
+      </mat-card>
+    </mat-list-item>
+    <mat-list-item *ngIf="message.type === 'received'" class="left" style="padding-bottom: 40px">
+      <mat-card style="max-width: 300px; max-height: 40px; overflow: auto">
+        <mat-card-title style="font-size: 16px">{{message.body}}</mat-card-title>
+        <mat-card-subtitle style="font-size: 12px">{{message.timestamp | date:'medium'}}</mat-card-subtitle>
+      </mat-card>
+    </mat-list-item>
+  </ng-container>
+</mat-list>

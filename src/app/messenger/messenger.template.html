@@ -1,0 +1,11 @@
+<div class="messenger" style="display: flex">
+  <app-contact-list
+    [login]="login"
+    (dialogHasBeenChosen)="changeDialog($event)"
+  ></app-contact-list>
+  <mat-divider [vertical]="true"></mat-divider>
+  <app-dialog
+    [login]="login"
+    [chosenDialog]="chosenDialog"
+  ></app-dialog>
+</div>
